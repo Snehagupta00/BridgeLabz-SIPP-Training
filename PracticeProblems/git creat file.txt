@@ -1,0 +1,114 @@
+🧭 Scenario: Starting from scratch on your computer
+✅ 1. Create a new folder (repo) locally
+bash
+Copy
+Edit
+mkdir MyNewRepo
+cd MyNewRepo
+✅ 2. Initialize Git
+bash
+Copy
+Edit
+git init
+This makes it a Git repository.
+
+✅ 3. Add some files
+Create a file like index.java or README.md, or use this command:
+
+bash
+Copy
+Edit
+echo "# My First Java Repo" > README.md
+✅ 4. Stage the files
+bash
+Copy
+Edit
+git add .
+This adds all files to staging.
+
+✅ 5. Commit the files
+bash
+Copy
+Edit
+git commit -m "Initial commit"
+🔗 Connect to GitHub
+✅ 6. Create a new repo on GitHub
+Go to https://github.com
+
+Click "New" (top-left or use the "+" button)
+
+Enter the repo name (e.g., MyNewRepo)
+
+Don’t initialize with README (you already have one locally)
+
+Click "Create repository"
+
+✅ 7. Connect your local repo to GitHub
+Copy the HTTPS URL from GitHub (e.g., https://github.com/your-username/MyNewRepo.git), then run:
+
+bash
+Copy
+Edit
+git remote add origin https://github.com/your-username/MyNewRepo.git
+✅ 8. Push the code to GitHub
+bash
+Copy
+Edit
+git push -u origin master
+If your local branch is main (default in recent Git versions), use:
+
+bash
+Copy
+Edit
+git push -u origin main
+✅ That’s it! Your local project is now on GitHub.
+
+Let me know if you're using VS Code or GitHub Desktop for GUI-based steps too!
+
+
+
+✅ Steps to Push a File to main Branch:
+🟡 1. Make sure you’re in your repo folder:
+bash
+Copy
+Edit
+cd path/to/your/repo
+🟡 2. Add your file (if not already added)
+For example, if you created a file named Demo.java:
+
+bash
+Copy
+Edit
+git add Demo.java
+Or to add all changes/files:
+
+bash
+Copy
+Edit
+git add .
+🟡 3. Commit your changes:
+bash
+Copy
+Edit
+git commit -m "Add Demo.java file"
+🟡 4. Push to GitHub (main branch):
+bash
+Copy
+Edit
+git push origin main
+✅ Done! Your file is now pushed to the main branch on GitHub.
+
+Let me know if you want to do the same using VS Code or GitHub Desktop instead of terminal.
+
+
+
+
+
+
+
+
+
+
+
+
+
