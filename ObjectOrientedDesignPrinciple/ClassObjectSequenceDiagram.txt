@@ -1,0 +1,183 @@
+   Sample Problem 1: School Results Application
+   --------------------------------------------
+
+Class Diagram :
+--------------                 
+  
+ +------------------+           1       *         +------------------+
+|     Student      |---------------------------->|     Subject      |
++------------------+                             +------------------+
+| - name: String   |                             | - name: String   |
+| - rollNo: int    |                             | - marks: float   |
++------------------+                             +------------------+
+| +getSubjects(): List<Subject>                  |
+| +addSubject(subject: Subject): void            |
+| +getTotalMarks(): float                        |
+| +getAverageMarks(): float                      |
++------------------+                             |
+                                                 |
+                                                 |
+                       uses                      |
+                       --------------------------->
+                                                 |
+                                                 |
+                                +----------------------------+
+                                |      GradeCalculator       |
+                                +----------------------------+
+                                |                            |
+                                +----------------------------+
+                                | +calculateGrade(student:   |
+                                |    Student): String        |
+                                +----------------------------+
+
+
+
+Object Diagram :
+---------------
+           
+ +---------------------------+
+|       :Student            |
+|---------------------------|
+| name = "John"             |
+| rollNo = 101              |
+|---------------------------|
+| subjects = [subject1,     |
+|             subject2]     |
++---------------------------+
+
+       /             \
+      /               \
+     /                 \
+
++--------------------------+      +--------------------------+
+| subject1 : Subject       |      | subject2 : Subject       |
+|--------------------------|      |--------------------------|
+| name = "Maths"           |      | name = "Science"         |
+| marks = 90               |      | marks = 85               |
++--------------------------+      +--------------------------+
+
+
+
+Sequence Diagram :
+----------------
+
+Student            GradeCalculator
+   |                      |
+   |  requestGrade()      |
+   |--------------------->|
+   |                      |
+   | getSubjects()        |
+   |--------------------->|  ← (optional: if GradeCalculator pulls data)
+   |                      |
+   | calculateGrade()     |
+   |--------------------->|
+   |                      |
+   | <<computes average>> |
+   |                      |
+   | return "Grade A"     |
+   |<---------------------|
+   |                      |
+
+
+      Sample Problem 2: Grocery Store Bill Generation Application
+
+ Class Diagram :
+---------------
+
++--------------------+        1       *       +--------------------+
+|     Customer       |------------------------|      Product       |
++--------------------+                        +--------------------+
+| - name: String     |                        | - name: String     |
+| - customerId: int  |                        | - price: float     |
+| - products: List<Product>                   | - quantity: int    |
++--------------------+                        +--------------------+
+| +addProduct(product: Product): void         |
+| +getTotalAmount(): float                    |
++--------------------+                        |
+
+                         uses
+                          |
+                          v
+              +--------------------------+
+              |      BillGenerator       |
+              +--------------------------+
+              |                          |
+              +--------------------------+
+              | +generateBill(customer:  |
+              |    Customer): float      |
+              +--------------------------+
+
+
+
+  Object Diagram :
+  --------------- 
+
++----------------------------+
+|      :Customer             |
+|----------------------------|
+| name = "Alice"             |
+| customerId = 201           |
+| products = [product1,      |
+|              product2]     |
++----------------------------+
+
+        /             \
+       /               \
+      /                 \
+
++-----------------------------+     +-----------------------------+
+| product1 : Product          |     | product2 : Product          |
+|-----------------------------|     |-----------------------------|
+| name = "Apples"             |     | name = "Milk"               |
+| price = 3.0                 |     | price = 2.0                 |
+| quantity = 2                |      | quantity = 1                 |
++-----------------------------+     +-----------------------------+
+
+
+ Sequence Diagram : 
+-------------------
+
+  
+   Customer              BillGenerator
+   |                        |
+   |  checkout()            |
+   |----------------------->|
+   |                        |
+   |  getPurchasedItems()   |
+   |----------------------->|  ← (if BillGenerator pulls data)
+   |                        |
+   | calculateTotal()       |
+   |----------------------->|
+   |                        |
+   | <<sum(price * qty)>>   |
+   |                        |
+   | return totalAmount     |
+   |<-----------------------|
+   |                        |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
