@@ -1,0 +1,306 @@
+   Object modeling: Object relationships and Communication,Assisted Problems
+   --------------------------------------------------------------------------
+
+
+
+1)  UML Class Diagram for Library and Books :
+
+
++----------------+               +----------------+
+|   Library      |<>-----------> |     Book       |
++----------------+               +----------------+
+| - books: List<Book>            | - title: String|
+|                                | - author: String|
++----------------+               +----------------+
+| +addBook(Book) |              
+| +getBooks()    |
++----------------+
+
+
+2) Bank and Account Holders :
+
++-----------+      1       *       +-------------+
+|   Bank    |<------------------->|  Customer    |
++-----------+                    +-------------+
+| - name    |                    | - name       |
+| - accounts: List<Account>     | - accounts: List<Account> |
++-----------+                    +-------------+
+| +openAccount(customer)        | +viewBalance()|
++-----------+                    +-------------+
+
+         ▲
+         |
+         | 1
+         |
+         v
+    +--------------+
+    |   Account    |
+    +--------------+
+    | - accountNo  |
+    | - balance    |
+    | - customer   |
+    | - bank       |
+    +--------------+
+
+
+3) Company and Departments :
+
+
+ +--------------+
+|   Company    |
++--------------+
+| - name       |
+| - departments: List<Department>
++--------------+
+| +addDepartment()               |
+| +removeCompany()              |
++--------------+
+         ◆
+         |
+         |
+         ▼
++-----------------+
+|   Department    |
++-----------------+
+| - name          |
+| - employees: List<Employee>
++-----------------+
+| +addEmployee()  |
++-----------------+
+         ◆
+         |
+         |
+         ▼
++-----------------+
+|   Employee      |
++-----------------+
+| - name          |
+| - position      |
++-----------------+
+
+
+Self Problems :
+---------------
+
+ Problem 1: School and Students with Courses (Association & Aggregation)
+
++-------------+                <>---------+
+|   School    |                aggregation
++-------------+                          |
+| - name      |                          v
+| - students: List<Student>     +----------------+
++-------------+                |   Student       |
+| +addStudent()                +----------------+
++-------------+                | - name         |
+                               | - courses: List<Course> |
+                               +----------------+
+                               | +enroll(course)        |
+                               | +viewCourses()         |
+                               +----------------+
+                                        ▲
+                                        |
+         association (many-to-many)     |
++----------------+         <---------->+
+|     Course     |
++----------------+
+| - name         |
+| - enrolledStudents: List<Student> |
++----------------+
+| +addStudent()  |
+| +viewStudents()|
++----------------+
+
+
+
+ Problem 2: University with Faculties and Departments (Composition & Aggregation)
+
++-----------------+
+|   University    |
++-----------------+
+| - name          |
+| - departments: List<Department>
+| - faculties: List<Faculty>
++-----------------+
+| +addDepartment()|
+| +addFaculty()   |
+| +deleteUniversity() |
++-----------------+
+         ◆                      <>
+         |                      |
+         v                      v
++-----------------+    +----------------+
+|   Department     |    |    Faculty     |
++-----------------+    +----------------+
+| - name          |    | - name         |
++-----------------+    | - designation  |
+                       +----------------+
+
+
+ Problem 3: Hospital, Doctors, and Patients (Association and Communication)
+
+
++-----------------+
+|    Hospital     |
++-----------------+
+| - doctors: List<Doctor>      |
+| - patients: List<Patient>    |
++-----------------+
+| +addDoctor()                |
+| +addPatient()               |
++-----------------+
+
+    Association (many-to-many)
+         ▲                         ▲
+         |                         |
+         |                         |
+         v                         v
++-----------------+     +------------------+
+|     Doctor      |<--->|     Patient      |
++-----------------+     +------------------+
+| - name          |     | - name           |
+| - patients: List<Patient> | - doctors: List<Doctor> |
++-----------------+     +------------------+
+| +consult(Patient) |   | +viewDoctors()   |
++-----------------+     +------------------+
+
+
+Problem 4: E-commerce Platform with Orders, Customers, and Products
+
+
++------------------+
+|    Customer      |
++------------------+
+| - name           |
+| - orders: List<Order>     |
++------------------+
+| +placeOrder(products)     |
+| +viewOrders()             |
++------------------+
+         |
+         | association
+         v
++------------------+
+|      Order       |
++------------------+
+| - orderId        |
+| - products: List<Product> |
+| - customer: Customer      |
++------------------+
+| +viewProducts()           |
++------------------+
+         |
+         | aggregation
+         v
++------------------+
+|     Product      |
++------------------+
+| - name           |
+| - price          |
++------------------+
+
+
+ Problem 5: University Management System
+
++------------------+
+|     Student      |
++------------------+
+| - name           |
+| - courses: List<Course>    |
++------------------+
+| +enrollCourse(course)     |
+| +viewCourses()            |
++------------------+
+
++------------------+
+|    Professor     |
++------------------+
+| - name           |
+| - courses: List<Course>    |
++------------------+
+| +assignCourse(course)     |
+| +viewCourses()            |
++------------------+
+
+      Association (many-to-many)            Association (many-to-many)
+           ▲      ▲                               ▲        ▲
+           |      |                               |        |
+           |      |                               |        |
+           v      v                               v        v
+
+                +------------------+
+                |     Course       |
+                +------------------+
+                | - title          |
+                | - professor: Professor |
+                | - students: List<Student> |
+                +------------------+
+                | +addStudent()    |
+                | +setProfessor()  |
+                | +viewDetails()   |
+                +------------------+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
